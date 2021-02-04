@@ -1,0 +1,29 @@
+body {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: slateblue;
+}
+
+.img {
+    border: 2px solid darkgrey;
+    background-color: whitesmoke;
+}
+
+.small {
+    height: 100px;
+    width: 100px;
+    /* border: 1px solid black; */
+}
+
+.large {
+    height: 500px;
+    width: 500px;
+}
+
+.img-container {
+    margin: auto;
+    padding-top: 3em;
+    width: 80%;
+    height: 10em;
+    background-color: whitesmoke;
+    border:  1px solid black;
+}

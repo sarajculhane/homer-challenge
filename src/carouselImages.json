@@ -1,0 +1,84 @@
+{
+  "carouselImages": [
+    {
+      "imageName": "letterBoardIc.jpg",
+      "imageCaption": "Letter Board"
+    },
+    {
+      "imageName": "listen-hat.jpg",
+      "imageCaption": "Hat"
+    },
+    {
+      "imageName": "listen-v02.jpg",
+      "imageCaption": "Girl"
+    },
+    {
+      "imageName": "listeningBell.jpg",
+      "imageCaption": "Bell"
+    },
+    {
+      "imageName": "listeningCap.jpg",
+      "imageCaption": "Cap"
+    },
+    {
+      "imageName": "listeningCup.jpg",
+      "imageCaption": "Cup"
+    },
+    {
+      "imageName": "listeningDoll.jpg",
+      "imageCaption": "Doll"
+    },
+    {
+      "imageName": "matchingAbc.jpg",
+      "imageCaption": "ABCs"
+    },
+    {
+      "imageName": "matchingBears.jpg",
+      "imageCaption": "Bears"
+    },
+    {
+      "imageName": "matchingBirds.jpg",
+      "imageCaption": "Birds"
+    },
+    {
+      "imageName": "matchingFriends.jpg",
+      "imageCaption": "Friends"
+    },
+    {
+      "imageName": "matchingZoo.jpg",
+      "imageCaption": "Zoo"
+    },
+    {
+      "imageName": "orderItCake.jpg",
+      "imageCaption": "Cake"
+    },
+    {
+      "imageName": "orderItToyN.jpg",
+      "imageCaption": "Toy"
+    },
+    {
+      "imageName": "paintPotBlue.jpg",
+      "imageCaption": "Blue Paint"
+    },
+    {
+      "imageName": "paintPotRed.jpg",
+      "imageCaption": " Red Paint"
+    },
+    {
+      "imageName": "petIc.jpg",
+      "imageCaption": "Pet"
+    },
+    {
+      "imageName": "princessIc.jpg",
+      "imageCaption": "Princess"
+    },
+    {
+      "imageName": "robotIc.jpg",
+      "imageCaption": "Robot"
+    },
+    {
+      "imageName": "spaceIc.jpg",
+      "imageCaption": "Space"
+    }
+  ]
+}
