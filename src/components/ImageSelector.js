@@ -12,17 +12,21 @@ const ImageSelector = () => {
     // state.sort((a, b) => a.imageCaption.toLowerCase().trim() > b.imageCaption.toLowerCase().trim() ? 1 : -1)
 
     const [selectedImages, setSelectedImages] = useState([])
-    // const [selected, setSelected] = useState(false)
+    const [selected, setSelected] = useState(false)
 
     const handleClick = (e) => {
         e.preventDefault()
-        // setSelected(!selected)
         let eventName = `${e.target.name}`
-        if(!selectedImages.includes(eventName)) setSelectedImages(prev => [...prev, eventName])
-        
-        else setSelectedImages(prev => prev.filter((id) => id === eventName))
-        
-        console.log(state)
+        let cur = state.selector.filter(((val, i) => (i+1).toString() === eventName))
+
+        if(!selectedImages.map((val ) => val.id).includes(cur[0].id)) {
+            setSelectedImages(prev => [...prev, ...cur])
+
+        } else {
+            setSelectedImages(prev => prev.filter((img) => img.id !== cur[0].id))
+        }
+
+        console.log(selectedImages, cur)
     }
 
     const handleAdd = () => {
