@@ -1,10 +1,12 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import {SmallImage} from './index'
+import {ImageContext} from './ImageContext'
 
-const ImageSelector = (props) => {
+
+const ImageSelector = () => {
 
     // get data from props and sort alphabetically
-    let data = props.data.carouselImages
+    const data = useContext(ImageContext)
     data.sort((a, b) => a.imageCaption.toLowerCase().trim() > b.imageCaption.toLowerCase().trim() ? 1 : -1)
 
     const [selectedImages, setSelectedImages] = useState([])
