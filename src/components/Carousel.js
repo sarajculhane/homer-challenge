@@ -8,8 +8,10 @@ const Carousel = () => {
     const [selectedImages, setSelectedImages] = useState([])
     const [removed, setRemoved] = useState(false)
     const [back, setBack] = useState(0)
-    const [forward, setForward] = useState(2)
+    
     const [changed, setChanged] = useState(false)
+    const [size, setSize] = useState(2)
+    const [forward, setForward] = useState(2)
 
     state.carousel.sort((a, b) => a.imageCaption.toLowerCase().trim() > b.imageCaption.toLowerCase().trim() ? 1 : -1)
 
@@ -42,23 +44,30 @@ const Carousel = () => {
 
     const goBack = () => {
         if(back > 0) {
-            setBack(back - 2)
-            setForward(forward  - 2)
+            setBack(back - size)
+            setForward(forward  - size)
         }
     }
 
     const goForward = () => {
         if(forward < state.carousel.length + 1)  {
-            setForward(forward + 2)
-            setBack(back + 2)
+            setForward(forward + size)
+            setBack(back + size)
         }
+    }
+
+    const sizeSelection = (e) => {
+        // console.log(e.target.value)
+        setForward(Number(e.target.value))
+        setSize(Number(e.target.value))
+        
     }
 
 
     return (
         <div className='carousel-container'>
             <div className='size-options'>
-                    <select>
+                    <select onChange={sizeSelection}>
                         <option value='2'>2</option>
                         <option value='3'>3</option>
                         <option value='4'>4</option>
@@ -66,8 +75,9 @@ const Carousel = () => {
                     </select>
                 </div>
                 {back === 0  ?  <button disabled> {'<'}</button>: <button onClick={goBack}> {'<'}</button> }
+                {console.log(size)}
             {state.carousel.slice(back, forward).map((img, id) => <div><CarouselImages img={img} handleClick={handleClick} id={id+1} removed={removed} selectedImages={selectedImages} /></div>)}
-            { forward === state.carousel.length || state.carousel.length < 3? <button disabled> {'>'}</button>: <button onClick={goForward} >{'>'}</button>} 
+            { forward > state.carousel.length-1 || state.carousel.length < size + 1? <button disabled> {'>'}</button>: <button onClick={goForward} >{'>'}</button>} 
            <div className='btn-cont'> { selectedImages.length ?   <button className='btn' onClick={handleRemove}>Remove</button> : <button className='btn' disabled>Remove</button>} </div>
            
         </div>

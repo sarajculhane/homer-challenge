@@ -6,8 +6,6 @@ const CarouselImages = (props) => {
     const {img, handleClick, id, selectedImages, removed} = props
     const [select, setSelect] = useState([])
 
-    console.log(img)
-
 
     const testClick = () => {
         if(!select.includes(id)) setSelect(prev => [...prev, id])
