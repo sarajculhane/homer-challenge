@@ -10,7 +10,6 @@ const Main = () => {
                 <Carousel />
                 {/* <ImageViewer />
                  */}
-                 <CarouselImages />
             </ImageProvider>
             
         </div>

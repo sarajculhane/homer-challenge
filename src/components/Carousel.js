@@ -12,6 +12,7 @@ const Carousel = () => {
     const [changed, setChanged] = useState(false)
     const [size, setSize] = useState(2)
     const [forward, setForward] = useState(2)
+    const [mode, setMode] = useState(false)
 
     state.carousel.sort((a, b) => a.imageCaption.toLowerCase().trim() > b.imageCaption.toLowerCase().trim() ? 1 : -1)
 
@@ -63,9 +64,14 @@ const Carousel = () => {
         
     }
 
+    const changeMode = () => {
+        setMode(!mode)
+    }
+
 
     return (
         <div className='carousel-container'>
+            {mode ? <button onClick= {changeMode}>View Only</button> : <button onClick= {changeMode}>Edit Images</button> }
             <div className='size-options'>
                     <select onChange={sizeSelection}>
                         <option value='2'>2</option>
@@ -76,7 +82,7 @@ const Carousel = () => {
                 </div>
                 {back === 0  ?  <button disabled> {'<'}</button>: <button onClick={goBack}> {'<'}</button> }
                 {console.log(size)}
-            {state.carousel.slice(back, forward).map((img, id) => <div><CarouselImages img={img} handleClick={handleClick} id={id+1} removed={removed} selectedImages={selectedImages} /></div>)}
+            {state.carousel.slice(back, forward).map((img, id) => <div><CarouselImages img={img} handleClick={handleClick} id={id+1} mode={mode} removed={removed} selectedImages={selectedImages} /></div>)}
             { forward > state.carousel.length-1 || state.carousel.length < size + 1? <button disabled> {'>'}</button>: <button onClick={goForward} >{'>'}</button>} 
            <div className='btn-cont'> { selectedImages.length ?   <button className='btn' onClick={handleRemove}>Remove</button> : <button className='btn' disabled>Remove</button>} </div>
            
