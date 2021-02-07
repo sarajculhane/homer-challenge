@@ -86,7 +86,7 @@ const Carousel = () => {
             { forward > state.carousel.length-1 || state.carousel.length < size + 1? <button disabled> {'>'}</button>: <button onClick={goForward} >{'>'}</button>} 
 
 
-          <div>  {!mode ? 
+          <div>  {mode ? 
            <div className='btn-cont'> { selectedImages.length ?   <button className='btn' onClick={handleRemove}>Remove</button> : <button className='btn' disabled>Remove</button>} </div>
            
         : <div></div>
