@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import {SmallImage} from './index'
 import {ImageContext} from './ImageContext'
 
@@ -26,12 +26,21 @@ const ImageSelector = () => {
             setSelectedImages(prev => prev.filter((img) => img.id !== cur[0].id))
         }
 
-        console.log(selectedImages, cur)
+        // console.log(selectedImages, cur)
     }
 
-    const handleAdd = () => {
+    useEffect(() => {
         dispatch({type: 'ADD_TO_CAROUSEL', payload : selectedImages})
-        console.log('added', selectedImages, state)
+        dispatch({type: 'REMOVE_FROM_VIEWER', payload : selectedImages})
+
+        return () => {
+            setSelectedImages([])
+        }
+    }, [selected])
+
+    const handleAdd = () => {
+        setSelected(!selected)
+        
     }
 
     return (

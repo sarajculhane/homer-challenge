@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext, useState, useEffect} from 'react'
 import {SmallImage} from './index'
 import {ImageContext} from './ImageContext'
 
@@ -6,23 +6,37 @@ const Carousel = () => {
 
     const {state, dispatch} = useContext(ImageContext)
     const [selectedImages, setSelectedImages] = useState([])
+    const [removed, setRemoved] = useState(false)
 
     const handleRemove = () => {
-        dispatch({type: 'REMOVE_FROM_CAROUSEL', payload : selectedImages})
+        setRemoved(!removed)
+        
         console.log('added', selectedImages, state)
     }
 
 
+    useEffect(() => {
+        dispatch({type: 'REMOVE_FROM_CAROUSEL', payload : selectedImages})
+        dispatch({type: 'ADD_TO_VIEWER' , payload : selectedImages})
+
+        return () => {
+            setSelectedImages([])
+        }
+    }, [removed])
+
     const handleClick = (e) => {
         e.preventDefault()
-        // setSelected(!selected)
         let eventName = `${e.target.name}`
-        let cur = state.selector.filter(((val, i) => (i+1).toString() === eventName))
-        if(!selectedImages.includes(eventName)) setSelectedImages(prev => [...prev, ...cur])
-        
-        else setSelectedImages(prev => prev.filter((val , id) => (id+ 1 ).toString() === eventName))
-        
-        console.log(state)
+        let cur = state.carousel.filter(((val, i) => (i+1).toString() === eventName))
+
+        if(!selectedImages.map((val ) => val.id).includes(cur[0].id)) {
+            setSelectedImages(prev => [...prev, ...cur])
+
+        } else {
+            setSelectedImages(prev => prev.filter((img) => img.id !== cur[0].id))
+        }
+
+        // console.log(selectedImages, cur)
     }
 
 

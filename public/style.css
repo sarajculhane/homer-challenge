@@ -43,6 +43,9 @@ body {
 
 .carousel-container {
     margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
     padding-top: 3em;
     width: 80%;
     background-color: whitesmoke;
