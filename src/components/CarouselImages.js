@@ -5,6 +5,7 @@ const CarouselImages = (props) => {
 
     const {img, handleClick, id, selectedImages, removed, mode} = props
     const [select, setSelect] = useState([])
+    const [caption, setShowCaption] = useState(false)
 
     const testClick = () => {
         if(!select.includes(id)) setSelect(prev => [...prev, id])
@@ -15,22 +16,25 @@ const CarouselImages = (props) => {
         setMode(!mode)
     }
 
+    const showCaption = () => {
+        setShowCaption(!caption)
+    }
+
+
     useEffect(() => {
         setSelect([])
     }, [removed])
 
     return (
         <div className='carousel-container'>
-    { !mode  ?  <div>
+    { !mode  ?  <div className='view-mode'>
         <div>
             <img src={`/images/${img.imageName}`} className={`small`} name={id} /></div>
-
-            <div>{img.imageCaption}</div>
     </div> : <div> {img ? 
-         <div onClick={handleClick} >
-            <div onClick={testClick}><img src={`/images/${img.imageName}`} className={`small ${ select.includes(id) ? 'selected' : ''}`} name={id} /></div>
+         <div className='edit-mode' onClick={handleClick} >
+            <div onClick={testClick}><img onMouseOver={showCaption} onMouseOut={showCaption} src={`/images/${img.imageName}`} className={`small ${ select.includes(id) ? 'selected' : ''}`} name={id} /></div>
 
-                <div>{img.imageCaption}</div>
+                { caption ? <div>{img.imageCaption}</div> : <div ></div>}
             </div>
             
             : <div></div>
