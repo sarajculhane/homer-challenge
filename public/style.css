@@ -47,6 +47,7 @@ body {
     flex-wrap: wrap;
     flex-direction: row;
     padding-top: 3em;
+    margin-top: 1em;
     width: 80%;
     background-color: whitesmoke;
     border:  1px solid black;
@@ -54,4 +55,22 @@ body {
 
 .selected {
     border: 2px solid blue;
+}
+
+.img-viewer {
+    width: 500px;
+    height: 500px;
+    border: 2px dashed wheat;
+}
+
+.btn {
+    border: 1px solid black;
+    width: 7em;
+    height: 3em;
+}
+
+.btn-cont {
+    width: 80%;
+    margin: auto;
+
 }

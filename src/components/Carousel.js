@@ -1,5 +1,5 @@
 import React, {useContext, useState, useEffect} from 'react'
-import {SmallImage} from './index'
+import {SmallImage, CarouselImages} from './index'
 import {ImageContext} from './ImageContext'
 
 const Carousel = () => {
@@ -42,9 +42,17 @@ const Carousel = () => {
 
     return (
         <div className='carousel-container'>
-            
+            <div className='size-options'>
+                    <select>
+                        <option value='2'>2</option>
+                        <option value='3'>3</option>
+                        <option value='4'>4</option>
+                        <option value='5'>5</option>
+                    </select>
+                </div>
+
             {state.carousel.map((img, id) => <div><SmallImage img={img} handleClick={handleClick} id={id+1} selectedImages={selectedImages} /></div>)}
-            { selectedImages.length ?   <button className='btn' onClick={handleRemove}>Remove</button> : <button className='btn' disabled>Remove</button>}
+           <div className='btn-cont'> { selectedImages.length ?   <button className='btn' onClick={handleRemove}>Remove</button> : <button className='btn' disabled>Remove</button>} </div>
         </div>
     )
 }

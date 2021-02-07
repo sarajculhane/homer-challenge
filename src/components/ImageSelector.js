@@ -48,9 +48,10 @@ const ImageSelector = () => {
     
 
     return (
+        
         <div className='img-container'>
                 {state.selector.map((img, id) => <div><SmallImage img={img} handleClick={handleClick} id={id+1} selectedImages={selectedImages} selected={selected}/></div>)}
-             { selectedImages.length ?   <button className='btn' onClick={handleAdd}>Add</button> : <button className='btn' disabled>Add</button>}
+           <div className='btn-cont'>  { selectedImages.length ?   <button className='btn' onClick={handleAdd}>Add</button> : <button className='btn' disabled>Add</button>} </div>
         </div>
     )
 }
