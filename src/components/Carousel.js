@@ -7,6 +7,9 @@ const Carousel = () => {
     const {state, dispatch} = useContext(ImageContext)
     const [selectedImages, setSelectedImages] = useState([])
     const [removed, setRemoved] = useState(false)
+    const [back, setBack] = useState(0)
+    const [forward, setForward] = useState(2)
+    const [changed, setChanged] = useState(false)
 
     state.carousel.sort((a, b) => a.imageCaption.toLowerCase().trim() > b.imageCaption.toLowerCase().trim() ? 1 : -1)
 
@@ -35,8 +38,20 @@ const Carousel = () => {
         } else {
             setSelectedImages(prev => prev.filter((img) => img.id !== cur[0].id))
         }
+    }
 
-        // console.log(selectedImages, cur)
+    const goBack = () => {
+        if(back > 0) {
+            setBack(back - 2)
+            setForward(forward  - 2)
+        }
+    }
+
+    const goForward = () => {
+        if(forward < state.carousel.length + 1)  {
+            setForward(forward + 2)
+            setBack(back + 2)
+        }
     }
 
 
@@ -50,9 +65,11 @@ const Carousel = () => {
                         <option value='5'>5</option>
                     </select>
                 </div>
-
-            {state.carousel.map((img, id) => <div><SmallImage img={img} handleClick={handleClick} id={id+1} selectedImages={selectedImages} /></div>)}
+                {back === 0  ?  <button disabled> {'<'}</button>: <button onClick={goBack}> {'<'}</button> }
+            {state.carousel.slice(back, forward).map((img, id) => <div><CarouselImages img={img} handleClick={handleClick} id={id+1} removed={removed} selectedImages={selectedImages} /></div>)}
+            { forward === state.carousel.length || state.carousel.length < 3? <button disabled> {'>'}</button>: <button onClick={goForward} >{'>'}</button>} 
            <div className='btn-cont'> { selectedImages.length ?   <button className='btn' onClick={handleRemove}>Remove</button> : <button className='btn' disabled>Remove</button>} </div>
+           
         </div>
     )
 }

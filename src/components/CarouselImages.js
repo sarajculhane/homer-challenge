@@ -1,30 +1,33 @@
-import React, {useState} from 'react'
-import data from '../carouselImages.json'
+import React, {useState, useEffect} from 'react'
 
-const CarouselImages = () => {
-    const images = data.carouselImages
-    const [back, setBack] = useState(0)
-    const [forward, setForward] = useState(2)
 
-    const goBack = () => {
-        if(back > 0) {
-            setBack(back - 1)
-            setForward(forward  - 1)
-        }
+const CarouselImages = (props) => {
+
+    const {img, handleClick, id, selectedImages, removed} = props
+    const [select, setSelect] = useState([])
+
+    console.log(img)
+
+
+    const testClick = () => {
+        if(!select.includes(id)) setSelect(prev => [...prev, id])
+        else setSelect(select.filter((imgId) => imgId !== id))
     }
 
-    const goForward = () => {
-        if(forward < images.length)  {
-            setForward(forward + 1)
-            setBack(back + 1)
-        }
-    }
+    useEffect(() => {
+        setSelect([])
+    }, [removed])
 
     return (
         <div className='carousel-container'>
-         {back === 0  ?  <button disabled> {'<'}</button>: <button onClick={goBack}> {'<'}</button> }
-           {images.map((img) => <div>{img.imageCaption}</div>).slice(back, forward)}
-         { forward === images.length-1 ? <button disabled> {'>'}</button>: <button onClick={goForward} >{'>'}</button>} 
+        {img ? 
+         <div onClick={handleClick} >
+            <div onClick={testClick}><img src={`/images/${img.imageName}`} className={`small ${ select.includes(id) ? 'selected' : ''}`} name={id} /></div>
+
+                <div>{img.imageCaption}</div>
+            </div>
+            : <div></div>
+        }
 
 
         </div>
