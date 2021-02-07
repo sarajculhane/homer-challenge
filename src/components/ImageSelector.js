@@ -9,10 +9,10 @@ const ImageSelector = () => {
     const {state, dispatch} = useContext(ImageContext)
     
 
-    // state.sort((a, b) => a.imageCaption.toLowerCase().trim() > b.imageCaption.toLowerCase().trim() ? 1 : -1)
+    state.selector.sort((a, b) => a.imageCaption.toLowerCase().trim() > b.imageCaption.toLowerCase().trim() ? 1 : -1)
 
     const [selectedImages, setSelectedImages] = useState([])
-    const [selected, setSelected] = useState(false)
+    const [selected, setSelected] = useState(0)
 
     const handleClick = (e) => {
         e.preventDefault()
@@ -27,25 +27,29 @@ const ImageSelector = () => {
         }
 
         // console.log(selectedImages, cur)
+
     }
 
     useEffect(() => {
-        dispatch({type: 'ADD_TO_CAROUSEL', payload : selectedImages})
+        
         dispatch({type: 'REMOVE_FROM_VIEWER', payload : selectedImages})
+        dispatch({type: 'ADD_TO_CAROUSEL', payload : selectedImages})
+        setSelectedImages([])
 
-        return () => {
-            setSelectedImages([])
-        }
     }, [selected])
 
     const handleAdd = () => {
+        
         setSelected(!selected)
+        
         
     }
 
+    
+
     return (
         <div className='img-container'>
-                {state.selector.map((img, id) => <div><SmallImage img={img} handleClick={handleClick} id={id+1} selectedImages={selectedImages} /></div>)}
+                {state.selector.map((img, id) => <div><SmallImage img={img} handleClick={handleClick} id={id+1} selectedImages={selectedImages} selected={selected}/></div>)}
              { selectedImages.length ?   <button className='btn' onClick={handleAdd}>Add</button> : <button className='btn' disabled>Add</button>}
         </div>
     )

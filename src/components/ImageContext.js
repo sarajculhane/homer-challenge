@@ -11,10 +11,9 @@ const initialState = {
 const ImageContext = React.createContext(initialState)
 
 let reducer = (state, action) => {
-    console.log(state.carousel, state.selector)
     switch (action.type) {
         case 'ADD_TO_CAROUSEL':
-            return {...state, carousel : action.payload}
+            return {...state, carousel : [...state.carousel,... action.payload]}
         case 'REMOVE_FROM_VIEWER' :
             return {...state, selector : state.selector.filter((img) => !action.payload.map((val) => val.id).includes(img.id))}
         case 'REMOVE_FROM_CAROUSEL':

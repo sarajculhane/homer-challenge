@@ -8,6 +8,8 @@ const Carousel = () => {
     const [selectedImages, setSelectedImages] = useState([])
     const [removed, setRemoved] = useState(false)
 
+    state.carousel.sort((a, b) => a.imageCaption.toLowerCase().trim() > b.imageCaption.toLowerCase().trim() ? 1 : -1)
+
     const handleRemove = () => {
         setRemoved(!removed)
         
@@ -18,10 +20,8 @@ const Carousel = () => {
     useEffect(() => {
         dispatch({type: 'REMOVE_FROM_CAROUSEL', payload : selectedImages})
         dispatch({type: 'ADD_TO_VIEWER' , payload : selectedImages})
+        setSelectedImages([])
 
-        return () => {
-            setSelectedImages([])
-        }
     }, [removed])
 
     const handleClick = (e) => {
@@ -42,6 +42,7 @@ const Carousel = () => {
 
     return (
         <div className='carousel-container'>
+            
             {state.carousel.map((img, id) => <div><SmallImage img={img} handleClick={handleClick} id={id+1} selectedImages={selectedImages} /></div>)}
             { selectedImages.length ?   <button className='btn' onClick={handleRemove}>Remove</button> : <button className='btn' disabled>Remove</button>}
         </div>
