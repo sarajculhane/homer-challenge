@@ -71,7 +71,7 @@ const Carousel = () => {
 
     return (
         <div className='carousel-container'>
-            {mode ? <button onClick= {changeMode}>View Only</button> : <button onClick= {changeMode}>Edit Images</button> }
+            {mode ? <button onClick= {changeMode}>View Only</button> : <button onClick= {changeMode}>Edit </button> }
             <div className='size-options'>
                     <select onChange={sizeSelection}>
                         <option value='2'>2</option>
@@ -84,9 +84,15 @@ const Carousel = () => {
                 {console.log(size)}
             {state.carousel.slice(back, forward).map((img, id) => <div><CarouselImages img={img} handleClick={handleClick} id={id+1} mode={mode} removed={removed} selectedImages={selectedImages} /></div>)}
             { forward > state.carousel.length-1 || state.carousel.length < size + 1? <button disabled> {'>'}</button>: <button onClick={goForward} >{'>'}</button>} 
+
+
+          <div>  {!mode ? 
            <div className='btn-cont'> { selectedImages.length ?   <button className='btn' onClick={handleRemove}>Remove</button> : <button className='btn' disabled>Remove</button>} </div>
            
-        </div>
+        : <div></div>
+
+            }</div>
+            </div>
     )
 }
 
