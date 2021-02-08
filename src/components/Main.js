@@ -1,6 +1,6 @@
-import React , {useState, useEffect} from 'react'
+import React from 'react'
 import {ImageContext, ImageProvider} from './ImageContext'
-import {ImageSelector, Carousel, CarouselImages, Header} from './index'
+import {ImageSelector, Carousel, Header} from './index'
 
 
 const Main = () => {
