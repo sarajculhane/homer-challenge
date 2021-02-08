@@ -23,7 +23,8 @@ const CarouselImages = (props) => {
         setMode(!mode)
     }
 
-    const showCaption = () => {
+    const showCaption = (e) => {
+        e.preventDefault()
         setShowCaption(!caption)
     }
 

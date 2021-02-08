@@ -140,7 +140,7 @@ body {
     border: 1px solid slategrey;
     background-color: slateblue;
     color: whitesmoke;
-    width: 6.5em;
+    width: 7em;
     height: 2.5em;
     box-shadow: slategray;
 }
@@ -157,8 +157,10 @@ body {
 }
 
 .btn-cont {
-    width: 80%;
+    display:flex;
+    justify-content: space-between;
     margin: auto;
+    padding: 10px;
 
 }
 
