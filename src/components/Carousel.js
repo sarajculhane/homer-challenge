@@ -1,5 +1,5 @@
 import React, {useContext, useState, useEffect} from 'react'
-import {SmallImage, CarouselImages} from './index'
+import {SmallImage, CarouselImages, ImageSizeSelector, CarouselControls} from './index'
 import {ImageContext} from './ImageContext'
 
 const Carousel = () => {
@@ -9,7 +9,6 @@ const Carousel = () => {
     const [removed, setRemoved] = useState(false)
     const [back, setBack] = useState(0)
     
-    const [changed, setChanged] = useState(false)
     const [size, setSize] = useState(2)
     const [forward, setForward] = useState(2)
     const [mode, setMode] = useState(false)
@@ -87,20 +86,13 @@ const Carousel = () => {
             <h3 className='select-header'>Carousel Editor</h3>
             <div className='carousel-modes'>
             {mode ? <button onClick= {changeMode} className='btn' >View Only</button> : <button onClick= {changeMode} className='btn' >Edit </button> }
-            <div className='size-options'>
-                    <select onChange={sizeSelection}>
-                        <option value='2'>2</option>
-                        <option value='3'>3</option>
-                        <option value='4'>4</option>
-                        <option value='5'>5</option>
-                    </select>
-                </div>
-                
-                <div>
+
+                <ImageSizeSelector sizeSelection={sizeSelection} />
+            <div>
                 <div className='main-carousel'>{state.carousel.slice(back, forward).map((img, id) => <div><CarouselImages size={size} img={img} handleClick={handleClick} id={id+1} mode={mode} removed={removed} selectedImages={selectedImages} /></div>)}</div>
-            
-            <div className='arrows'> {back === 0  ?  <button className='btn-sm' disabled> {'<'}</button>: <button onClick={goBack} className='btn-sm' > {'<'}</button> }
-            { forward > state.carousel.length-1 || state.carousel.length < size + 1? <button disabled className='btn-sm' > {'>'}</button>: <button onClick={goForward} className='btn-sm' >{'>'}</button>} </div>
+
+                <CarouselControls back={back} forward={forward} len={state.carousel.length} size={size} goBack={goBack} goForward={goForward} />
+
             
             </div>
             

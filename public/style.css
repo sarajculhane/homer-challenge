@@ -166,19 +166,23 @@ body {
 
 .main-carousel {
     margin: auto;
-    border: 1px solid slategray;
     width: 900px;
     height: 225px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    align-items: center;
+    background-color: white;
+    border: 1px solid slategray;
+    box-shadow: inset 0 -0.5em 0.5em rgba(0,0,0,0.1),
+    0 0  0 1px rgb(255,255,255),
+    0.2em 0.1em rgba(0,0,0,0);
 
 }
 
 .arrows {
     display: flex;
     flex-direction: row;
-    /* padding: 10px; */
     margin: auto;
     padding-top: 10px;
     
