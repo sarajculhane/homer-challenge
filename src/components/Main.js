@@ -2,6 +2,7 @@ import React , {useState, useEffect} from 'react'
 import {ImageContext, ImageProvider} from './ImageContext'
 import {ImageSelector, Carousel, CarouselImages, Header} from './index'
 
+
 const Main = () => {
     return (
         <div className='main'>
@@ -9,8 +10,6 @@ const Main = () => {
                 <Header />
                 <ImageSelector />
                 <Carousel />
-                {/* <ImageViewer />
-                 */}
             </ImageProvider>
             
         </div>

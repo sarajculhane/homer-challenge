@@ -14,13 +14,19 @@ const Carousel = () => {
     const [forward, setForward] = useState(2)
     const [mode, setMode] = useState(false)
 
+    // sort alphabetically
+
     state.carousel.sort((a, b) => a.imageCaption.toLowerCase().trim() > b.imageCaption.toLowerCase().trim() ? 1 : -1)
+
 
     const handleRemove = () => {
         setRemoved(!removed)
-        
-        console.log('added', selectedImages, state)
     }
+
+
+    /* dispatch remove from carousel and add to viewer to update ImageContext when state of removed changes
+        also resets selectedImages so that there are no active selections
+    */
 
 
     useEffect(() => {
@@ -30,6 +36,8 @@ const Carousel = () => {
 
     }, [removed])
 
+
+    // same as ImageSelector click handler except done for the Carousel
     const handleClick = (e) => {
         e.preventDefault()
         let eventName = `${e.target.name}`
@@ -42,6 +50,8 @@ const Carousel = () => {
             setSelectedImages(prev => prev.filter((img) => img.id !== cur[0].id))
         }
     }
+
+    // Applied to the back/forward buttons on click, takes user to the previous/next set of images based on the current size 
 
     const goBack = () => {
         if(back > 0) {
@@ -57,12 +67,15 @@ const Carousel = () => {
         }
     }
 
+    // Change the idx of forward and the size of the images to display after the user makes a selection
+
     const sizeSelection = (e) => {
-        // console.log(e.target.value)
         setForward(Number(e.target.value))
         setSize(Number(e.target.value))
         
     }
+
+    // toggles between edit/view mode
 
     const changeMode = () => {
         setMode(!mode)

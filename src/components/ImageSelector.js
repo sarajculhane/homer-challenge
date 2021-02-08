@@ -14,6 +14,12 @@ const ImageSelector = () => {
     const [selectedImages, setSelectedImages] = useState([])
     const [selected, setSelected] = useState(0)
 
+    /* The click handler gets the e.target.name and find the match with the correct id
+    then, it adds the item to the selectedImages array if it was not in it or removes it if it 
+    already was
+    */
+    
+
     const handleClick = (e) => {
         e.preventDefault()
         let eventName = `${e.target.name}`
@@ -26,9 +32,12 @@ const ImageSelector = () => {
             setSelectedImages(prev => prev.filter((img) => img.id !== cur[0].id))
         }
 
-        // console.log(selectedImages, cur)
-
     }
+
+
+    /* dispatch remove from viewer and add to carousel to update ImageContext when state of selected changes
+        also resets selectedImages so that there are no active selections
+    */
 
     useEffect(() => {
         
@@ -41,7 +50,6 @@ const ImageSelector = () => {
     const handleAdd = () => {
         
         setSelected(!selected)
-        
         
     }
 

@@ -101,7 +101,7 @@ body {
     align-items: flex-end;
     padding: 2em;
     margin-top: 1em;
-    height: 15rem;
+    height: 20rem;
     width: 80%;
     background-color: whitesmoke;
     border:  1px dashed slateblue;
@@ -124,18 +124,24 @@ body {
     border: 2px solid blue;
 }
 
+.viewer {
+    margin-top: 400px;
+}
+
 .img-viewer {
     width: 500px;
     height: 500px;
-    border: 2px dashed wheat;
+    margin-top: 300px;
+    border: 2px solid slategray;
+    background-color: whitesmoke;
 }
 
 .btn, .btn-sm {
     border: 1px solid slategrey;
     background-color: slateblue;
     color: whitesmoke;
-    width: 7em;
-    height: 3em;
+    width: 6.5em;
+    height: 2.5em;
     box-shadow: slategray;
 }
 
@@ -145,8 +151,9 @@ body {
 }
 
 .btn-sm, .btn-sm:disabled {
-    width: 5em;
+    width: 6em;
     height: 2em;
+    font-weight: bolder;
 }
 
 .btn-cont {
@@ -159,7 +166,7 @@ body {
     margin: auto;
     border: 1px solid slategray;
     width: 900px;
-    height: 200px;
+    height: 225px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -169,5 +176,12 @@ body {
 .arrows {
     display: flex;
     flex-direction: row;
+    /* padding: 10px; */
+    margin: auto;
+    padding-top: 10px;
     
+}
+
+.size-options {
+    margin: 10px;
 }

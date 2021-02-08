@@ -8,14 +8,15 @@ const CarouselImages = (props) => {
     const [caption, setShowCaption] = useState(false)
     const [viewImage, setViewImage] = useState(false)
 
-    const testClick = () => {
+    const imageClick = () => {
         if(!select.includes(id)) setSelect(prev => [...prev, id])
         else setSelect(select.filter((imgId) => imgId !== id))
     }
 
+    // Toggles for imageViewer, the mode and showing the captions within edit more
+
     const toggleImage = () => {
         setViewImage(!viewImage)
-        console.log('cliked')
     }
 
     const toggleMode = () => {
@@ -25,6 +26,8 @@ const CarouselImages = (props) => {
     const showCaption = () => {
         setShowCaption(!caption)
     }
+
+    // Get the correct class name for size of an image based on selected value
 
     const dimension = () => {
         if(size === 5) return 'small'
@@ -45,14 +48,13 @@ const CarouselImages = (props) => {
         <div >
             
         <div >
-            {console.log(newSize)}
     { !mode  ?  <div className='view-mode'>
         <div onClick={toggleImage}>
-            <img src={`/images/${img.imageName}`} className={newSize} name={id}  /></div>
+         {!viewImage ?  <img src={`/images/${img.imageName}`} className={newSize} name={id}/> : <div></div> }</div>
             
     </div> : <div> {img ? 
          <div className='edit-mode' onClick={handleClick} >
-            <div onClick={testClick}><img onMouseOver={showCaption} onMouseOut={showCaption} src={`/images/${img.imageName}`} className={`${newSize} ${ select.includes(id) ? 'selected' : ''}`} name={id} /></div>
+            <div onClick={imageClick}><img onMouseOver={showCaption} onMouseOut={showCaption} src={`/images/${img.imageName}`} className={`${newSize} ${ select.includes(id) ? 'selected' : ''}`} name={id} /></div>
 
                 { caption ? <div>{img.imageCaption}</div> : <div ></div>}
             </div>
@@ -66,7 +68,7 @@ const CarouselImages = (props) => {
         </div>
 
             <div className='viewer'> 
-                {viewImage ? <ImageViewer image={img} onClick={toggleImage} /> : <div></div>}
+                {viewImage ? <ImageViewer image={img} onClick={toggleImage} toggleImage={toggleImage} /> : <div></div>}
             </div>
         </div>
     )
