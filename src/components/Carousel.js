@@ -89,7 +89,7 @@ const Carousel = () => {
 
                 <ImageSizeSelector sizeSelection={sizeSelection} />
             <div>
-                <div className='main-carousel'>{state.carousel.slice(back, forward).map((img, id) => <div><CarouselImages size={size} img={img} handleClick={handleClick} id={id+1} mode={mode} removed={removed} selectedImages={selectedImages} /></div>)}</div>
+                <div className='main-carousel'>{state.carousel.map((img, id) => <div><CarouselImages size={size} img={img} handleClick={handleClick} id={id+1} mode={mode} removed={removed} selectedImages={selectedImages} /></div>).slice(back, forward)}</div>
 
                 <CarouselControls back={back} forward={forward} len={state.carousel.length} size={size} goBack={goBack} goForward={goForward} />
 

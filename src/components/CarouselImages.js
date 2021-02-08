@@ -3,7 +3,7 @@ import ImageViewer from './ImageViewer'
 
 const CarouselImages = (props) => {
 
-    const {img, handleClick, id, selectedImages, removed, mode, size} = props
+    const {img, handleClick, id, selectedImages, removed, mode, size, back, forward, carousel} = props
     const [select, setSelect] = useState([])
     const [caption, setShowCaption] = useState(false)
     const [viewImage, setViewImage] = useState(false)
@@ -38,6 +38,7 @@ const CarouselImages = (props) => {
 
     }
 
+
     const newSize = dimension()
 
 
@@ -47,13 +48,12 @@ const CarouselImages = (props) => {
 
     return (
         <div >
-            
         <div >
     { !mode  ?  <div className='view-mode'>
         <div onClick={toggleImage}>
          {!viewImage ?  <img src={`/images/${img.imageName}`} className={newSize} name={id}/> : <div></div> }</div>
             
-    </div> : <div> {img ? 
+    </div> : <div> {  img ? 
          <div className='edit-mode' onClick={handleClick} >
             <div onClick={imageClick}><img onMouseOver={showCaption} onMouseOut={showCaption} src={`/images/${img.imageName}`} className={`${newSize} ${ select.includes(id) ? 'selected' : ''}`} name={id} /></div>
 
