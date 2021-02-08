@@ -71,7 +71,9 @@ const Carousel = () => {
 
     return (
         <div className='carousel-container'>
-            {mode ? <button onClick= {changeMode}>View Only</button> : <button onClick= {changeMode}>Edit </button> }
+            <h3 className='select-header'>Carousel Editor</h3>
+            <div className='carousel-modes'>
+            {mode ? <button onClick= {changeMode} className='btn' >View Only</button> : <button onClick= {changeMode} className='btn' >Edit </button> }
             <div className='size-options'>
                     <select onChange={sizeSelection}>
                         <option value='2'>2</option>
@@ -80,11 +82,15 @@ const Carousel = () => {
                         <option value='5'>5</option>
                     </select>
                 </div>
-                {back === 0  ?  <button disabled> {'<'}</button>: <button onClick={goBack}> {'<'}</button> }
-                {console.log(size)}
-            {state.carousel.slice(back, forward).map((img, id) => <div><CarouselImages img={img} handleClick={handleClick} id={id+1} mode={mode} removed={removed} selectedImages={selectedImages} /></div>)}
-            { forward > state.carousel.length-1 || state.carousel.length < size + 1? <button disabled> {'>'}</button>: <button onClick={goForward} >{'>'}</button>} 
-
+                
+                <div>
+                <div className='main-carousel'>{state.carousel.slice(back, forward).map((img, id) => <div><CarouselImages size={size} img={img} handleClick={handleClick} id={id+1} mode={mode} removed={removed} selectedImages={selectedImages} /></div>)}</div>
+            
+            <div className='arrows'> {back === 0  ?  <button className='btn-sm' disabled> {'<'}</button>: <button onClick={goBack} className='btn-sm' > {'<'}</button> }
+            { forward > state.carousel.length-1 || state.carousel.length < size + 1? <button disabled className='btn-sm' > {'>'}</button>: <button onClick={goForward} className='btn-sm' >{'>'}</button>} </div>
+            
+            </div>
+            
 
           <div>  {mode ? 
            <div className='btn-cont'> { selectedImages.length ?   <button className='btn' onClick={handleRemove}>Remove</button> : <button className='btn' disabled>Remove</button>} </div>
@@ -92,6 +98,7 @@ const Carousel = () => {
         : <div></div>
 
             }</div>
+            </div>
             </div>
     )
 }

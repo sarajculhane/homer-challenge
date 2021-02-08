@@ -9,6 +9,30 @@ body {
     margin: auto;
 }
 
+.header {
+    border: 1px solid slateblue;
+    color: whitesmoke;
+    font-weight: bolder;
+    background-color: slateblue;
+    margin-bottom: 1em;
+    box-shadow: inset 5em 1em slateblue; 
+    padding: 0.5em;
+}
+
+.select-header{
+    display:flex;
+    justify-content: space-between;
+    margin: auto;
+    padding: 10px;
+    
+}
+
+.img-items {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 .img {
     border: 2px solid darkgrey;
     background-color: whitesmoke;
@@ -22,6 +46,33 @@ body {
     /* border: 1px solid black; */
 }
 
+.med , img.med {
+    height: 125px;
+    width: 125px;
+    display: flex;
+    flex-direction: row;
+    /* border: 1px solid black; */
+}
+
+.med-lg, img.med-lg {
+    height: 150px;
+    width: 150px;
+    display: flex;
+    flex-direction: row;
+}
+
+.lg, img.lg {
+    height: 175px;
+    width: 175x;
+    display: flex;
+    flex-direction: row;
+}
+
+.carousel-modes {
+    display:flex;
+    justify-content: space-around;
+}
+
 
 .large, img.large {
     height: 500px;
@@ -33,12 +84,12 @@ body {
     flex-wrap: wrap;
     flex-direction: row;
     margin: auto;
-    padding: 3em;
+    padding: 2em;
     /* padding-bottom: 3em; */
     width: 80%;
     height: 20rem;
     background-color: whitesmoke;
-    border:  1px solid black;
+    border:  1px dashed slateblue;
     justify-content: center;
 }
 
@@ -47,18 +98,25 @@ body {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    padding-top: 3em;
+    align-items: flex-end;
+    padding: 2em;
     margin-top: 1em;
-    height: 10rem;
+    height: 15rem;
     width: 80%;
     background-color: whitesmoke;
-    border:  1px solid black;
+    border:  1px dashed slateblue;
 }
 
 .edit-mode, .view-mode {
     display: flex;
     flex-wrap: wrap;
+    width: 80%;
+    margin: auto;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    padding: 10px;
 
 }
 
@@ -72,14 +130,44 @@ body {
     border: 2px dashed wheat;
 }
 
-.btn {
-    border: 1px solid black;
+.btn, .btn-sm {
+    border: 1px solid slategrey;
+    background-color: slateblue;
+    color: whitesmoke;
     width: 7em;
     height: 3em;
+    box-shadow: slategray;
+}
+
+.btn:disabled, .btn-sm:disabled {
+    background-color: rgb(177, 175, 192);
+    color: whitesmoke;
+}
+
+.btn-sm, .btn-sm:disabled {
+    width: 5em;
+    height: 2em;
 }
 
 .btn-cont {
     width: 80%;
     margin: auto;
 
+}
+
+.main-carousel {
+    margin: auto;
+    border: 1px solid slategray;
+    width: 900px;
+    height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+}
+
+.arrows {
+    display: flex;
+    flex-direction: row;
+    
 }

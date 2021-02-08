@@ -3,7 +3,7 @@ import ImageViewer from './ImageViewer'
 
 const CarouselImages = (props) => {
 
-    const {img, handleClick, id, selectedImages, removed, mode} = props
+    const {img, handleClick, id, selectedImages, removed, mode, size} = props
     const [select, setSelect] = useState([])
     const [caption, setShowCaption] = useState(false)
     const [viewImage, setViewImage] = useState(false)
@@ -26,21 +26,33 @@ const CarouselImages = (props) => {
         setShowCaption(!caption)
     }
 
+    const dimension = () => {
+        if(size === 5) return 'small'
+        if(size === 4) return 'med'
+        if(size === 3) return 'med-lg'
+        if(size === 2) return 'lg'
+
+    }
+
+    const newSize = dimension()
+
 
     useEffect(() => {
         setSelect([])
     }, [removed])
 
     return (
-        <div>
-        <div>
+        <div >
+            
+        <div >
+            {console.log(newSize)}
     { !mode  ?  <div className='view-mode'>
         <div onClick={toggleImage}>
-            <img src={`/images/${img.imageName}`} className={`small`} name={id}  /></div>
+            <img src={`/images/${img.imageName}`} className={newSize} name={id}  /></div>
             
     </div> : <div> {img ? 
          <div className='edit-mode' onClick={handleClick} >
-            <div onClick={testClick}><img onMouseOver={showCaption} onMouseOut={showCaption} src={`/images/${img.imageName}`} className={`small ${ select.includes(id) ? 'selected' : ''}`} name={id} /></div>
+            <div onClick={testClick}><img onMouseOver={showCaption} onMouseOut={showCaption} src={`/images/${img.imageName}`} className={`${newSize} ${ select.includes(id) ? 'selected' : ''}`} name={id} /></div>
 
                 { caption ? <div>{img.imageCaption}</div> : <div ></div>}
             </div>
